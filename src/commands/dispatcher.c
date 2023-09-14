@@ -125,6 +125,10 @@ void dispatchCommand(char* command, char** args, int argCount) {
     }
 }
 
+/**
+ * Implementarei em breve
+*/
+
 int getSimilarCommandCount(char* command) {
     return 0;
 }
