@@ -5,7 +5,6 @@
 #include <string.h>
 
 #define TOK_DELIMITADOR " \t\r\n\a"
-
 static int MAX_ARGS_TOKENS_PER_LINE = 100;
 
 /**
@@ -33,27 +32,30 @@ int main(int argc, char const *argv[])
 
 	char** args;
 
-	do {
-		printf("irius@%s# ", userName);
-		argsCount = readLine(parsedArgs);
+    do {
+        printf("irius@%s# ", userName);
+        argsCount = readLine(parsedArgs);
 
         if (parsedArgs[0] == NULL) continue;
 
         strcpy(currentCommand, parsedArgs[0]);
         dispatchCommand(currentCommand, parsedArgs, argsCount);
-	} while(1);
+    } while(1);
 
     return 0;
 }
 
+
+// ADICIONAR PARTICIONADOR DE LINHA PARA CONSEGUIR DIGITAR MAIS DE UM COMANDO POR LINHA
+
 int readLine(char** parsedArgs) {
-	ssize_t tam = 0;
+    ssize_t tam = 0;
 
     // https://c-for-dummies.com/blog/?p=1112
-	if (getline(parsedArgs, &tam, stdin) == -1) {
+    if (getline(parsedArgs, &tam, stdin) == -1) {
         perror("readline");
         exit(0);
-	}
+    }
 
     char* string = parsedArgs[0];
     int index = 0;
@@ -70,5 +72,5 @@ int readLine(char** parsedArgs) {
     // ao chamar o execvp, o ultimo argumento deve ser NULL
     parsedArgs[index] = NULL;
 
-	return index;
+    return index;
 }
