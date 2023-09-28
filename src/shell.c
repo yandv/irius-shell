@@ -8,8 +8,10 @@
 static int MAX_ARGS_TOKENS_PER_LINE = 100;
 
 /**
- * Lê uma linha inteira do stdin e salva ela em line
- * Também faz o parse dos argumentos da linha e salvando em args
+ * Lê uma linha inteira do stdin e salva ela em parsedArgs
+ * Cada token é separado por um espaço
+ * Salva os tokens em parsedArgs, cada um sendo um elemento do vetor e
+ * o último elemento é NULL
  * 
  * @return o tamanho do vetor de argumentos
  */
@@ -30,7 +32,7 @@ int main(int argc, char const *argv[])
     char* parsedArgs[MAX_ARGS_TOKENS_PER_LINE];
     int argsCount = -1;
 
-	char** args;
+    char** args;
 
     do {
         printf("irius@%s# ", userName);
