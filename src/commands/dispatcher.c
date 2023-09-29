@@ -28,11 +28,6 @@ static int COMMAND_COUNT = sizeof(commands) / sizeof(Command);
 */
 void dispatchCommand(char* command, char** args, int argCount);
 
-/**
- * Retorna o índice do comando no vetor de comandos
-*/
-int getSimilarCommandCount(char* command);
-
 int getCommandIndex(char* command);
 
 /**
@@ -52,8 +47,8 @@ void handleHelpCommand(char** args, int argCount) {
     int index = getCommandIndex(args[1]);
 
     if (index == -1) {
-        printf("I cannot found the command '%s' not found, but there are %i similar ones.\n",
-                                                    args[1], getSimilarCommandCount(args[1]));
+        printf("I cannot found the command '%s'.\n",
+                                                    args[1]);
         return;
     }
 
@@ -81,7 +76,7 @@ void handleForkCommand(char* command, char** args, int argCount) {
 
     if (pid == 0) { // quando é o processo filho
         if (execvp(command, args) == -1) {
-            printf("Command '%s' not found, but there are %i similar ones.\n", command, getSimilarCommandCount(command));
+            printf("Command '%s' not found.\n", command);
         }
         exit(EXIT_FAILURE);
         return;
@@ -123,12 +118,4 @@ void dispatchCommand(char* command, char** args, int argCount) {
         handleForkCommand(command, args, argCount);
 	    break;
     }
-}
-
-/**
- * Implementarei em breve
-*/
-
-int getSimilarCommandCount(char* command) {
-    return 0;
 }

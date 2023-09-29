@@ -1,3 +1,3 @@
 compile:
-	gcc src/shell.c -o shell.exe
+	gcc-9 src/shell.c -o shell.exe
 	./shell.exe

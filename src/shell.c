@@ -29,7 +29,7 @@ int main(int argc, char const *argv[])
     printf("Welcome back %s, use the command 'help' to receive information of the available comamnds!\n", userName);
 
     char *currentCommand;
-    char* parsedArgs[MAX_ARGS_TOKENS_PER_LINE];
+    char *parsedArgs[MAX_ARGS_TOKENS_PER_LINE];
     int argsCount = -1;
 
     char** args;
